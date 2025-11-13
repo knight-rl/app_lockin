@@ -1,0 +1,445 @@
+/* Variables de color para fácil mantenimiento */
+:root {
+  --color-bg-dark: #0f172a; /* Fondo oscuro */
+  --color-neon-blue: #00ffff; /* Color neón primario (Cian) */
+  --color-neon-yellow: #FFD700; /* Color de las estrellas y racha */
+  --color-barra-fondo-gris: #374151; /* Fondo de barras grises */
+  --color-barra-relleno-azul: #3b82f6; /* Relleno de barra de progreso general */
+  --color-barra-relleno-naranja: #f97316; /* Relleno de barra de pregunta (Timer) */
+  --color-opcion-fondo: #1f2937; /* Fondo de botones/opciones */
+  --color-opcion-borde: #4b5563; /* Borde de botones/opciones */
+  --color-opcion-hover: #374151;
+}
+
+/* --- Base y Contenedor Principal --- */
+body {
+  background-color: var(--color-bg-dark);
+  color: white;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+}
+
+.app {
+  width: 100%;
+  max-width: 800px;
+  padding: 30px;
+  background: #111827;
+  border-radius: 12px;
+  box-shadow: 0 0 10px var(--color-neon-blue), 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.titulo-app {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--color-neon-blue);
+  text-shadow: 
+      0 0 10px var(--color-neon-blue),
+      0 0 20px rgba(0, 255, 255, 0.7);
+}
+
+.divider-neon {
+  border: none;
+  height: 1px;
+  background-color: var(--color-opcion-borde);
+  margin: 30px 0;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+/* --- Home Screen (Pantalla de Inicio) --- */
+.home-screen {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.subtitulo {
+  font-size: 1.1rem;
+  color: #9ca3af;
+  margin-bottom: 40px;
+}
+
+.opciones-inicio {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.boton-principal, .boton-secundario {
+  padding: 15px 30px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 1.1rem;
+}
+
+.boton-principal {
+  background-color: var(--color-neon-blue);
+  color: var(--color-bg-dark);
+  box-shadow: 0 0 10px var(--color-neon-blue);
+}
+
+.boton-principal:hover {
+  background-color: #4df8f8;
+  box-shadow: 0 0 15px #4df8f8;
+}
+
+.boton-secundario {
+  background-color: var(--color-opcion-fondo);
+  color: white;
+  border: 1px solid var(--color-opcion-borde);
+}
+
+.boton-secundario:hover {
+  background-color: var(--color-opcion-hover);
+  border-color: var(--color-neon-blue);
+}
+
+/* --- Toggle Switch para el Timer --- */
+.config-timer-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.config-text {
+  color: var(--color-neon-blue);
+  font-weight: 600;
+}
+
+/* Estilos del Switch (copiado de un diseño moderno) */
+.switch-label {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+.switch-label input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-barra-fondo-gris);
+  transition: .4s;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+input:checked + .slider {
+  background-color: var(--color-neon-blue);
+  box-shadow: 0 0 5px var(--color-neon-blue);
+}
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+.slider.round {
+  border-radius: 34px;
+}
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+/* --- Cuestionario: Progreso y Racha --- */
+.progreso-header {
+  text-align: right; 
+  font-size: 0.9rem;
+  color: var(--color-neon-blue);
+  margin-bottom: 5px;
+}
+
+.progreso-barra-fondo {
+  background-color: var(--color-barra-fondo-gris);
+  border-radius: 10px;
+  height: 8px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  border: 1px solid var(--color-neon-blue);
+}
+
+.progreso-barra-relleno {
+  height: 100%;
+  background-color: var(--color-barra-relleno-azul); 
+  transition: width 0.5s ease-in-out;
+}
+
+.star-racha-container {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.estrellas {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 5px;
+}
+
+.star-icon {
+  width: 35px; /* Estrellas Grandes */
+  height: 35px;
+  fill: none;
+  stroke: var(--color-neon-yellow);
+  stroke-width: 1.5;
+  filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.8));
+  transition: fill 0.5s ease;
+}
+
+.racha-texto {
+  font-size: 0.9rem;
+  color: var(--color-neon-yellow);
+  text-shadow: 0 0 3px var(--color-neon-yellow);
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+
+/* --- Cuestionario: Pregunta y Timer --- */
+.seccion-pregunta {
+  padding: 20px;
+  border: 1px solid var(--color-opcion-borde);
+  border-radius: 8px;
+  background: #1f2937;
+  margin-top: 20px;
+}
+
+.temporizador-container {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.tiempo-texto {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 5px; 
+}
+
+.progreso-barra-fondo-timer {
+  background-color: var(--color-barra-fondo-gris);
+  border-radius: 20px;
+  height: 30px; 
+  overflow: hidden;
+  border: 1px solid var(--color-opcion-borde);
+  position: relative;
+  width: 100%;
+}
+
+.progreso-bar {
+  height: 100%;
+  background-color: var(--color-barra-relleno-naranja); /* Naranja/Rojo para el timer */
+  transition: width 1s linear;
+}
+
+.contador-pregunta {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.9rem;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+  z-index: 10;
+}
+
+.titulo-pregunta {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 30px; 
+  margin-bottom: 25px;
+  text-align: left;
+  padding: 0 5px;
+}
+
+
+/* --- Botón de Pausa/Reanudar --- */
+.boton-pausa {
+  margin-top: 25px;
+  padding: 10px 20px;
+  background-color: var(--color-neon-blue);
+  color: var(--color-bg-dark); 
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  box-shadow: 0 0 5px var(--color-neon-blue);
+}
+
+.boton-pausa:hover {
+  background-color: #4df8f8;
+  transform: translateY(-1px);
+}
+
+.boton-pausa:disabled {
+  background-color: var(--color-barra-fondo-gris);
+  color: #9ca3af;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+
+/* --- Opciones de Respuesta y Feedback --- */
+.seccion-opciones {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.boton-opcion {
+  background-color: var(--color-opcion-fondo);
+  color: white;
+  padding: 15px;
+  border: 2px solid var(--color-opcion-borde);
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.boton-opcion:hover:not(:disabled) {
+  background-color: var(--color-opcion-hover);
+  border-color: var(--color-neon-blue);
+}
+
+.boton-opcion:disabled {
+  cursor: not-allowed;
+}
+
+/* Estado de la respuesta */
+.correcto-resaltado {
+  background-color: #10b981 !important; /* Verde */
+  border-color: #059669 !important;
+  font-weight: bold;
+}
+
+.incorrecto-resaltado {
+  background-color: #ef4444 !important; /* Rojo */
+  border-color: #b91c1c !important;
+}
+
+.seleccionado {
+  /* Resaltado azul al clickear antes de revelar la respuesta */
+  border-color: var(--color-neon-blue) !important;
+  box-shadow: 0 0 8px var(--color-neon-blue);
+}
+
+.feedback-box {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 6px;
+  border: 2px solid var(--color-neon-yellow);
+  background-color: #2c2f42;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+/* Sección de Resultados Finales */
+.seccion-resultados {
+  text-align: center;
+  padding: 40px;
+  background: #1f2937;
+  border-radius: 12px;
+  border: 1px solid var(--color-neon-blue);
+  margin-top: 50px;
+}
+
+.boton-reiniciar {
+  padding: 10px 20px;
+  background-color: var(--color-neon-blue);
+  color: #111827;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 20px;
+}
+
+.boton-reiniciar:hover {
+  background-color: #4df8f8;
+}
+/* --- Sección de Carga (Upload View) --- */
+.seccion-carga {
+  text-align: center;
+  padding: 20px;
+}
+
+.seccion-carga h2 {
+  color: var(--color-neon-blue);
+  margin-bottom: 30px;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+}
+
+/* Ocultar el input de archivo estándar y usar un botón custom */
+.input-file {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background-color: var(--color-opcion-fondo);
+  color: white;
+  border: 2px solid var(--color-opcion-borde);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.input-file:hover {
+  border-color: var(--color-neon-blue);
+}
+
+.input-file:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.file-name-info {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  margin-top: 5px;
+}
+
+.mensaje-error {
+  color: #ff6666;
+  background-color: #331111;
+  border: 1px solid #990000;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.mensaje-loading {
+  color: var(--color-neon-yellow);
+  text-shadow: 0 0 3px rgba(255, 215, 0, 0.5);
+  margin-top: 15px;
+  font-weight: 600;
+}
