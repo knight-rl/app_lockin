@@ -1,18 +1,44 @@
 {
-  "name": "react",
-  "version": "0.0.0",
-  "private": true,
-  "dependencies": {
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0"
-  },
+  "name": "simulacro-ia-medicina",
+  "version": "1.0.0",
+  "description": "App de simulacros generados por IA a partir de PDFs",
+  "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    
+    
+    // ------------------------------------------------------------------
+    // ⬇️ LIBRERÍAS CRÍTICAS PARA LA FUNCIÓN DE LA IA (BACKEND) ⬇️
+    "@google/genai": "^0.1.0",
+    "formidable": "^3.5.1",
+    "pdf-parse": "^1.1.1",
+    // ------------------------------------------------------------------
+    
+    "web-vitals": "^2.1.4"
+  },
   "devDependencies": {
-    "react-scripts": "latest"
+    "@types/react": "^18.2.66",
+    "@types/react-dom": "^18.2.22",
+    "typescript": "^4.9.5"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
