@@ -8,7 +8,8 @@
     "react-scripts": "5.0.1",
     
     // DEPENDENCIAS DEL BACKEND (SERVIDOR DE LA IA)
-    "@google/genai": "^0.17.0",       
+    // 💡 IMPORTANTE: Eliminamos el operador ^ para forzar la resolución.
+    "@google/genai": "0.17.0",       
     "formidable": "^3.5.1",
     "pdf-parse": "^1.1.1",
     "isomorphic-fetch": "^3.0.0",
